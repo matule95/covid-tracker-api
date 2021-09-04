@@ -1,7 +1,10 @@
-const dummyData = require("../data/covid-19-tracker-moz-export.json");
-
+const { getDatabaseData } = require("../utils/firebaseOperations");
 module.exports = {
   getFirebaseData: () => {
-    return dummyData;
+    return new Promise((resolve) => {
+      getDatabaseData().then((data) => {
+        resolve(data);
+      });
+    });
   },
 };

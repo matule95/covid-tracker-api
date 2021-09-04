@@ -1,8 +1,10 @@
-const { dashboardData } = require("../controller/");
+const { getData } = require("../controller/");
 module.exports = function (app) {
   app.route("/getData").get((req, res) => {
-    res.json({
-      ...dashboardData(),
+    getData().then((data) => {
+      res.json({
+        ...data,
+      });
     });
   });
 };

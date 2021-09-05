@@ -84,7 +84,7 @@ module.exports = {
           Number.parseInt(yesterday.hospitalized),
       },
       other_deaths: statistics.other_deaths,
-      last_updated: `${data.dailyInformation[0].date} às ${data.dailyInformation[0].updatedAt}`,
+      last_updated: `${data.dailyInformation[0].date} ${data.dailyInformation[0].updatedAt}`,
     };
     const all_time_infected_percentage = module.exports.getInfectedPercentage(
       sanitizedInfo,
@@ -97,12 +97,10 @@ module.exports = {
     const recovered_percentage =
       module.exports.getRecoveredPercentage(sanitizedInfo);
     return {
-      dashboardInfo: {
-        ...sanitizedInfo,
-        all_time_infected_percentage,
-        today_infected_percentage,
-        recovered_percentage,
-      },
+      ...sanitizedInfo,
+      all_time_infected_percentage,
+      today_infected_percentage,
+      recovered_percentage,
     };
   },
 };

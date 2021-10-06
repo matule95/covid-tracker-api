@@ -4,7 +4,7 @@ const fs = require("fs");
 module.exports = {
   getFirebaseData: () => {
     return new Promise((resolve) => {
-      const localJSON = JSON.parse(fs.readFileSync('./static/covid-19-tracker-moz-export.json'));
+      const localJSON = JSON.parse(fs.readFileSync('/var/covid-tracker-api/covid-tracker-api/static/covid-19-tracker-moz-export.json'));
       resolve(localJSON)
     });
   },
@@ -12,7 +12,7 @@ module.exports = {
     getDatabaseData().then((data) => {
       let sanitizedData = JSON.stringify(data)
       logger.dispatch('Saving Local JSON file');
-      fs.writeFileSync('./static/covid-19-tracker-moz-export.json', sanitizedData)
+      fs.writeFileSync('/var/covid-tracker-api/covid-tracker-api/static/covid-19-tracker-moz-export.json', sanitizedData)
     })
   }
 };
